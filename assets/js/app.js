@@ -21,7 +21,7 @@ async function displayUser(username) { /* Agregamos la palabra async para la fun
 
 function handleError(err) {
   console.log('OH NO!');
-  console.error; /* le cambiamos console.log a console.error */
+  console.error(err); /* le cambiamos console.log a console.error(err) */
   n.textContent = `Algo salió mal: ${err}`
 }
 
