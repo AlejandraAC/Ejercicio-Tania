@@ -25,4 +25,4 @@ function handleError(err) {
   $n.textContent = `Algo salió mal: ${err}`
 }
 
-displayUser('stolinski') /* Se quitó ".catch(handleError); y se agregó el bloque try y catch en la función asíncrona" */
+displayUser('stolinski').catch(handleError); 
