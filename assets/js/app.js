@@ -7,13 +7,13 @@ const $l = document.querySelector('.location'); /* Agregamos la clase location e
 async function displayUser(username) { /* Agregamos la palabra async para la función asíncrona */
   /* Agregamos los bloques de try y catch para el manejo de excepciones */
   try{
-  $n.textContent = 'cargando...'; 
-  const response = await fetch(`${usersEndpoint}/${username}`); /* fetch hace la solicitud HTTP GET para traer lo que hay en usersEndPoint y username, await espera la respuesta */
-  const data = await response.json(); /* Convierte el cuerpo de response en formato JSON y lo guarda en data */
-  console.log(data); /* imprime data en consola */
-  $n.textContent = data.name; /* Quitamos las template literals de las tres variables, para que se muestren los valores y no las cadenas */
-  $b.textContent = data.blog;
-  $l.textContent = data.location;
+    $n.textContent = 'cargando...'; 
+    const response = await fetch(`${usersEndpoint}/${username}`); /* fetch hace la solicitud HTTP GET para traer lo que hay en usersEndPoint y username, await espera la respuesta */
+    const data = await response.json(); /* Convierte el cuerpo de response en formato JSON y lo guarda en data */
+    console.log(data); /* imprime data en consola */
+    $n.textContent = data.name; /* Quitamos las template literals de las tres variables, para que se muestren los valores y no las cadenas */
+    $b.textContent = data.blog;
+    $l.textContent = data.location;
   } catch (err){
     handleError(err);
   }
@@ -25,4 +25,4 @@ function handleError(err) {
   $n.textContent = `Algo salió mal: ${err}`
 }
 
-displayUser('stolinski').catch(handleError); 
+displayUser('stolinski').catch(handleError);; 
