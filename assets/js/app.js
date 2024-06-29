@@ -22,7 +22,7 @@ async function displayUser(username) { /* Agregamos la palabra async para la fun
 function handleError(err) {
   console.log('OH NO!');
   console.error(err); /* le cambiamos console.log a console.error(err) */
-  n.textContent = `Algo salió mal: ${err}`
+  $n.textContent = `Algo salió mal: ${err}`
 }
 
 displayUser('stolinski') /* Se quitó ".catch(handleError); y se agregó el bloque try y catch en la función asíncrona" */
