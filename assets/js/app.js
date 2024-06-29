@@ -1,31 +1,28 @@
-const baseEndpoint = 'https://api.github.com';
-const usersEndpoint = `${baseEndpoint}/users`;
+const baseEndpoint = 'https://api.github.com'; /* Enruta al URL de la API en github */
+const usersEndpoint = `${baseEndpoint}/users`; /* Enruta al URL de la API con los datos de usuario */
+const $n = document.querySelector('.name'); /* Selecciona un elemento del html con la clase "name". Le agregamos el punto para referenciar la clase  */
+const $b = document.querySelector('.blog'); /* Cambiamos el # por punto para referenciar una clase */
+const $l = document.querySelector('.location'); /* Agregamos la clase location en el documento HTML */
 
-/* Se acomodan el querySelector con sintaxis de la clase
-se pone . antes de la clase */
-const $n = document.querySelector('.name');
-const $b = document.querySelector('.blog');
-const $l = document.querySelector('.location'); /* Se agrega a HTML */
-
-/* Se crea funcion asincrona, se agrega try y catch */
-async function displayUser(username) { 
+async function displayUser(username) { /* Agregamos la palabra async para la función asíncrona */
+  /* Agregamos los bloques de try y catch para el manejo de excepciones */
   try{
-    $n.textContent = 'cargando...';
-    const response = await fetch(`${usersEndpoint}/${username}`);
-    const data = await response.json(); /* Se pone json para convertir a objeto */
-    console.log(data);
-    $n.textContent = data.name; /* Se quitan comillas para traer el dato */
+    $n.textContent = 'cargando...'; 
+    const response = await fetch(`${usersEndpoint}/${username}`); /* fetch hace la solicitud HTTP GET para traer lo que hay en usersEndPoint y username, await espera la respuesta */
+    const data = await response.json(); /* Convierte el cuerpo de response en formato JSON y lo guarda en data */
+    console.log(data); /* imprime data en consola */
+    $n.textContent = data.name; /* Quitamos las template literals de las tres variables, para que se muestren los valores y no las cadenas */
     $b.textContent = data.blog;
     $l.textContent = data.location;
-  } catch (err) {   
-    handleError(err) /* Se llama a la funcion de error */
+  } catch (err){
+    handleError(err);
   }
 }
 
 function handleError(err) {
   console.log('OH NO!');
-  console.error(err); /* Se imprime error */
-  $n.textContent = `Algo salió mal: ${err}`/* Se agrega $ a n */
+  console.error(err); /* le cambiamos console.log a console.error(err) */
+  $n.textContent = `Algo salió mal: ${err}`
 }
 
 displayUser('stolinski').catch(handleError);
